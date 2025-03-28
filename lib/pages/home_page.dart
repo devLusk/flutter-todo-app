@@ -15,9 +15,8 @@ class _HomePageState extends State<HomePage> {
 
   // List of todo taks
   List todoList = [
-    // index 0        index 1
-    ["Study Flutter", false],
-    ["Go to gym", false],
+    ["Thats a default taks", false],
+    ["Slide to left to delete", false],
   ];
 
   // Checkbox check
@@ -48,6 +47,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void deleteTaks(int index) {
+    setState(() {
+      todoList.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,6 +73,7 @@ class _HomePageState extends State<HomePage> {
             taskName: todoList[index][0],
             taskCompleted: todoList[index][1],
             onChanged: (value) => isChecked(value, index),
+            deleteFunction: (context) => deleteTaks(index),
           );
         },
       ),
