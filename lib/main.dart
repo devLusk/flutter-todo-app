@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_textfield/pages/home_page.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  var localStorage = await Hive.openBox('appData');
+
   runApp(const MainApp());
 }
 
